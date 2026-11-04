@@ -1,4 +1,5 @@
 package ExceptionHandling;
+
 import java.util.Scanner;
 
 public class Exception2 {
