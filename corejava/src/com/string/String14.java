@@ -1,32 +1,41 @@
 package com.string;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class String14 {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
 
-		System.out.println("Enter a string : ");
-		String str = sc.nextLine();
+        Scanner sc = new Scanner(System.in);
 
-		Map<Character, Integer> map = new LinkedHashMap<>();
-		for (int i = 0; i < str.length(); i++) {
+        System.out.println("Enter a string:");
+        String str = sc.nextLine();
 
-			char ch = str.charAt(i);
+        for (int i = 0; i < str.length(); i++) {
 
-			if (map.containsKey(ch)) {
-				map.put(ch, map.get(ch) + 1);
-			} else {
-				map.put(ch, 1);
-			}
-		}
+            char ch = str.charAt(i);
+            boolean alreadyCounted = false;
 
-		System.out.println(map);
+            for (int k = 0; k < i; k++) {
+                if (str.charAt(k) == ch) {
+                    alreadyCounted = true;
+                    break;
+                }
+            }
 
-		sc.close();
+            if (!alreadyCounted) {
 
-	}
+                int count = 0;
 
+                for (int j = 0; j < str.length(); j++) {
+                    if (str.charAt(j) == ch) {
+                        count++;
+                    }
+                }
+
+                System.out.println(ch + " = " + count);
+            }
+        }
+
+        sc.close();
+    }
 }
