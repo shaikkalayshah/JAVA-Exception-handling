@@ -2,44 +2,43 @@ package com.threads;
 
 class Counter {
 
-    int count = 0;
+	int count = 0;
 
-    synchronized void increment() {
-        count++;
-    }
+	synchronized void increment() {
+		count++;
+	}
 }
 
 class MyThread extends Thread {
 
-    Counter c;
+	Counter c;
 
-    MyThread(Counter c) {
-        this.c = c;
-    }
+	MyThread(Counter c) {
+		this.c = c;
+	}
 
-    public void run() {
+	public void run() {
 
-        for (int i = 1; i <= 1000; i++) {
-            c.increment();
-        }
-    }
+		for (int i = 1; i <= 1000; i++) {
+			c.increment();
+		}
+	}
 }
 
 public class Threads7 {
-    public static void main(String[] args)
-            throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
 
-        Counter c = new Counter();
+		Counter c = new Counter();
 
-        MyThread t1 = new MyThread(c);
-        MyThread t2 = new MyThread(c);
+		MyThread t1 = new MyThread(c);
+		MyThread t2 = new MyThread(c);
 
-        t1.start();
-        t2.start();
+		t1.start();
+		t2.start();
 
-        t1.join();
-        t2.join();
+		t1.join();
+		t2.join();
 
-        System.out.println("Final Counter: " + c.count);
-    }
+		System.out.println("Final Counter: " + c.count);
+	}
 }
